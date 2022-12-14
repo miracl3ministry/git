@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Без заголовка</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css"
+            integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"
+            integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        ></script>
+        <link rel="stylesheet" href="static/style.css" />
+        <script src="static/main.js"></script>
+    </head>
+    <body>
+        <!-- <div class="row">
+            Никогда-нибудь я добавлю вторую фичу
+            
+            <a href="#landgen">Генератор лендингов</a>
+            <a href="#rephraser">Перефразирование текста</a>
+        </div> -->
+        <div class="container-fluid text-center">
+            <div class="row d-none rephraser">
+                <div class="col-1">123</div>
+                <div class="col-11">456</div>
+            </div>
+            <div class="row landgen">
+                <div class="col-3">
+                    <form id="landgenForm">
+                        <h4>Генератор landing page</h4>
+                        <div class="mb-3">
+                            <label for="product_name" class="form-label">Название продукта</label>
+                            <input type="text" class="form-control" id="product_name" placeholder="Google chrome" name="product_name" minlength="2" maxlength="100" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_description" class="form-label">Описание продукта</label>
+                            <textarea class="form-control" id="product_description" rows="3" placeholder="Google chrome лучший веб-браузер" name="product_description" minlength="20" maxlength="600" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feature_1" class="form-label">Особенность продукта 1</label>
+                            <textarea class="form-control" id="feature_1" rows="3" placeholder="Инструменты Google прямо в браузере" name="feature_1" minlength="10" maxlength="100" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feature_2" class="form-label">Особенность продукта 2</label>
+                            <textarea class="form-control" id="feature_2" rows="3" placeholder="Управление настройками безопасности в интернете" name="feature_2" minlength="10" maxlength="100" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="feature_3" class="form-label">Особенность продукта 3</label>
+                            <textarea
+                                class="form-control"
+                                id="feature_3"
+                                rows="3"
+                                placeholder="Эффективные и простые инструменты для работы в браузере"
+                                name="feature_3"
+                                minlength="10"
+                                maxlength="100"
+                                required
+                            ></textarea>
+                        </div>
+                        <select class="form-select mb-3" aria-label="Default select example" name="language" required>
+                            <option selected value="ru">Язык (ru)</option>
+                            <option value="en">en</option>
+                            <option value="nl">nl</option>
+                            <option value="fr">fr</option>
+                            <option value="de">de</option>
+                            <option value="it">it</option>
+                            <option value="pl">pl</option>
+                            <option value="es">es</option>
+                            <option value="pt-pt">pt-pt</option>
+                            <option value="pt-br">pt-br</option>
+                            <option value="ru">ru</option>
+                            <option value="ja">ja</option>
+                            <option value="zh">zh</option>
+                            <option value="bg">bg</option>
+                            <option value="cs">cs</option>
+                            <option value="da">da</option>
+                            <option value="el">el</option>
+                            <option value="hu">hu</option>
+                            <option value="lt">lt</option>
+                            <option value="lv">lv</option>
+                            <option value="ro">ro</option>
+                            <option value="sk">sk</option>
+                            <option value="sl">sl</option>
+                            <option value="sv">sv</option>
+                            <option value="fi">fi</option>
+                            <option value="et">et</option>
+                        </select>
+                        <button type="submit" id="submitLandgen" class="btn btn-primary mb-3">Submit</button>
+                        <div class="arrows">
+                            <svg
+                                version="1.1"
+                                id="leftArrow"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px"
+                                y="0px"
+                                width="30px"
+                                height="30px"
+                                viewBox="0 0 30 30"
+                                style="enable-background: new 0 0 30 30"
+                                xml:space="preserve"
+                            >
+                                <g>
+                                    <g id="chevron-left">
+                                        <polygon points="24.735,3.57 21.165,0 5.865,15.3 21.165,30.6 24.735,27 13,15.3" fill="#0d6efd" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span>Страница <span id="pageNum">1</span>/<span id="pageCount">1</span></span>
+                            <svg
+                                version="1.1"
+                                id="rightArrow"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px"
+                                y="0px"
+                                width="30px"
+                                height="30px"
+                                viewBox="0 0 30 30"
+                                style="enable-background: new 0 0 30 30"
+                                xml:space="preserve"
+                            >
+                                <g>
+                                    <g id="keyboard-arrow-right">
+                                        <polygon points="5.865,26.775 17.595,15.3 5.865,3.57 9.435,0 24.735,15.3 9.435,30.6" fill="#0d6efd" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div class="downloadLinks">
+                            <a href="" id="downloadTxt">Скачать .txt</a>
+                            <a href="" id="downloadZip">Скачать .zip</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-9">
+                    <div id="preview" class="w-100 h-100">Preview...</div>
+                </div>
+            </div>
+        </div>
+        <!-- error toast -->
+        <div class="toast align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" id="errorToastEl" style="position: absolute; top: 20px; right: 50px">
+            <div class="d-flex">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+        <!-- success toast -->
+        <div class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true" id="successToastEl" style="position: absolute; top: 20px; right: 50px">
+            <div class="d-flex">
+                <div class="toast-body"></div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </body>
+</html>
